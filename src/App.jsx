@@ -6,8 +6,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
-import Rooms from "./pages/Rooms";
-import Blog from "./pages/Blog";
+import Explore from "./pages/Explore";
 import About from "./pages/About";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -50,16 +49,12 @@ export default function App() {
           element: <Home />,
         },
         {
-          path: "/blog",
-          element: <Blog />,
-        },
-        {
           path: "/contact",
           element: <Contact />,
         },
         {
           path: "/explore",
-          element: <Rooms />,
+          element: <Explore />,
         },
         {
           path: "/about",

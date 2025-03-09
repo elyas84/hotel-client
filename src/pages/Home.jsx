@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { aboutBannerImages, cities, food, homeBanner, offeres } from "../data";
 import "./home.css";
 import Card from "../components/Card";
@@ -6,6 +6,28 @@ import SimpleSlider from "../components/SimpleSlider";
 import CityCard from "../components/CityCard";
 
 export default function Home() {
+  /** pagination for cities */
+  const [currentPageCity, setCurrentPageCity] = useState(1);
+  const [cityPerPage, setCityPerPage] = useState(6);
+  const lastCityIndex = currentPageCity * cityPerPage;
+  const firstCituesIndex = lastCityIndex - cityPerPage;
+  const currentCities = cities.slice(firstCituesIndex, lastCityIndex);
+  let citiesSize = [];
+  for (let i = 1; i <= cities.length / cityPerPage; i++) {
+    citiesSize.push(i);
+  }
+
+  /** pagination for offers */
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(4);
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostsIndex = lastPostIndex - postsPerPage;
+  const currentData = offeres.slice(firstPostsIndex, lastPostIndex);
+  let arraySize = [];
+  for (let i = 1; i <= offeres.length / postsPerPage; i++) {
+    arraySize.push(i);
+  }
+
   return (
     <div className="home-container">
       <div className="banner">
@@ -40,21 +62,53 @@ export default function Home() {
             <h1>Explore the city</h1>
           </div>
           <div className="home-page-about-section-bottom-row-explore">
-            {cities.map((data, i) => (
+            {currentCities.map((data, i) => (
               <CityCard data={data} key={i} />
             ))}
           </div>
+          <ul className="page-index-container">
+            {citiesSize.map((page, i) => (
+              <div className="button-container">
+                <button
+                  className="page-btn"
+                  key={i}
+                  onClick={() => {
+                    setCurrentPageCity(page);
+                  }}
+                >
+                  {page}
+                </button>
+              </div>
+            ))}
+          </ul>
         </div>
+
         <div className="home-page-about-section-bottom">
           <div className="home-page-about-section-bottom-top">
             <small>Our Offers</small>
             <h1>Ongoing Offers</h1>
           </div>
           <div className="home-page-about-section-bottom-row">
-            {offeres.map((data, i) => (
+            {currentData.map((data, i) => (
               <Card data={data} key={i} />
             ))}
           </div>
+          <ul className="page-index-container">
+            {arraySize.map((page, i) => (
+              <div className="button-container">
+                <button
+                  className="page-btn"
+                  key={i}
+                  onClick={() => {
+                    setCurrentPage(page);
+                  }}
+                >
+                  {page}
+                </button>
+              </div>
+            ))}
+          </ul>
+          {/* <Pagination array={offeres} /> */}
         </div>
         <div className="home-page-about-section-top">
           <div className="top-right">
