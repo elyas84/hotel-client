@@ -1,124 +1,183 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { GiPalmTree } from "react-icons/gi";
-import { RiArrowDownSFill, RiArrowDropUpFill } from "react-icons/ri";
 import "./header.css";
-import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa6";
-export default function Header() {
-  const activeNavLink = ({ isActive }) => {
-    return {
-      color: isActive && "#3e8ed0",
-      borderBottom: isActive && "2px solid #3e8ed0",
-      padding: isActive && "0 0 7px 0",
-    };
-  };
 
-  const [buttonClicked, setButtonClicked] = useState(false);
-  const openMobileMenu = () => {
-    setButtonClicked(!buttonClicked);
+import {
+  IoBedOutline,
+  IoCarSportOutline,
+  IoCalendarOutline,
+} from "react-icons/io5";
+import {
+  MdFlight,
+  MdOutlineTravelExplore,
+  MdOutlineKeyboardArrowDown,
+} from "react-icons/md";
+import { IoIosSearch } from "react-icons/io";
+import { AiOutlineUser } from "react-icons/ai";
+import { NavLink, useLocation } from "react-router-dom";
+export default function Header() {
+  const location = useLocation();
+  const [clicked, setClicked] = useState(false);
+  const [options, setOptions] = useState({
+    adult: 2,
+    kids: 2,
+    room: 1,
+  });
+
+  const optionHandler = (name, operation) => {
+    setOptions((prev) => {
+      return {
+        ...prev,
+        [name]: operation === "i" ? options[name] + 1 : options[name] - 1,
+      };
+    });
   };
   return (
     <div className="header-container">
-      <nav>
-        <ul className="main-navbar">
-          <li>
-            <NavLink to="/" style={activeNavLink}>
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/explore" style={activeNavLink}>
-              Explore
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/about" style={activeNavLink}>
-              About
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/contact" style={activeNavLink}>
-              Contact
-            </NavLink>
-          </li>
-        </ul>
-        <div className="logo">
+      <div className="header-main-container">
+        <div className="header-top">
+          <div className="logo">
+            <NavLink to="/">FakeHotel.com</NavLink>
+          </div>
+          <div className="register-login">
+            <button>Create account</button>
+            <button>Log in</button>
+          </div>
+        </div>
+        <div className="header-nav">
           <NavLink to="/">
-            <span>
-              <GiPalmTree />
-            </span>
+            <small>
+              <IoBedOutline /> Accommondation
+            </small>
+          </NavLink>
+          <NavLink to="flight">
+            <small>
+              <MdFlight />
+              Flight
+            </small>
+          </NavLink>
+          <NavLink to="rent-car">
+            <small>
+              <IoCarSportOutline /> Rent car
+            </small>
+          </NavLink>
+          <NavLink to="/attraction">
+            <small>
+              <MdOutlineTravelExplore />
+              Attraction
+            </small>
           </NavLink>
         </div>
-        <ul className="right-ul">
-          <div className="links">
-            <button>
-              <FaInstagram />
-            </button>
-            <button>
-              <FaFacebook />
-            </button>
-            <button>
-              <FaYoutube />
-            </button>
-          </div>
-          <div className="book-room-btn">
-            <Link to="/booking">
-              <button>Book A Room</button>
-            </Link>
-          </div>
-        </ul>
-      </nav>
-      <div className="mobile-nav">
-        <div className="mobile-nav-logo">
-          <NavLink to="/">
-            <span>
-              <GiPalmTree />
-            </span>
-          </NavLink>
+        <div className="header-bottom">
+          <h1>Find your next stay</h1>
+          <p>Search for deals on hotels, vacation homes and more...</p>
         </div>
-        <div className="mobile-bar">
-          <button
-            onClick={() => {
-              openMobileMenu();
-            }}
-          >
-            {buttonClicked ? <RiArrowDropUpFill /> : <RiArrowDownSFill />}
-          </button>
-        </div>
-        <ul
-          onClick={() => {
-            openMobileMenu();
-          }}
-          className={
-            buttonClicked ? "main-navbar-mobile" : "main-navbar-mobile-hidden"
-          }
-        >
-          <li>
-            <NavLink to="/" style={activeNavLink}>
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/explore" style={activeNavLink}>
-              Explore
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/about" style={activeNavLink}>
-              About
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/contact" style={activeNavLink}>
-              Contact
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/booking" style={activeNavLink}>
-              Book A Room
-            </NavLink>
-          </li>
-        </ul>
+        {location.pathname === "/" ? (
+          <div className="search-bar">
+            <div className="search-bar-box">
+              <IoBedOutline />
+              <input type="text" placeholder="Where do you want to go ?" />
+            </div>
+            <div className="search-bar-box">
+              <div className="date-container">
+                <input type="date" />
+              </div>
+              <div className="date-container">
+                <input type="date" />
+              </div>
+            </div>
+            <div className="search-bar-box search-bar-box-options">
+              <small>
+                <AiOutlineUser />
+              </small>
+              <small
+                onClick={() => {
+                  setClicked(!clicked);
+                }}
+              >
+                {options.adult} adults. {options.kids} children. {options.room}{" "}
+                room
+              </small>
+              <small>
+                <MdOutlineKeyboardArrowDown
+                  style={{ cursor: "pointer" }}
+                  onClick={() => {
+                    setClicked(!clicked);
+                  }}
+                />
+              </small>
+              <div className={clicked ? "options" : "options-hidden"}>
+                <div className="options-container">
+                  <div className="option-name">Adult</div>
+                  <div className="increase-decrease-container">
+                    <button
+                      disabled={options.adult <= 1}
+                      onClick={() => {
+                        optionHandler("adult", "d");
+                      }}
+                    >
+                      -
+                    </button>
+                    <span>{options.adult}</span>
+                    <button
+                      onClick={() => {
+                        optionHandler("adult", "i");
+                      }}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+                <div className="options-container">
+                  <div className="option-name">Kids</div>
+                  <div className="increase-decrease-container">
+                    <button
+                      disabled={options.kids <= 0}
+                      onClick={() => {
+                        optionHandler("kids", "d");
+                      }}
+                    >
+                      -
+                    </button>
+                    <span>{options.kids}</span>
+                    <button
+                      onClick={() => {
+                        optionHandler("kids", "i");
+                      }}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+                <div className="options-container">
+                  <div className="option-name">Room</div>
+                  <div className="increase-decrease-container">
+                    <button
+                      disabled={options.room <= 1}
+                      onClick={() => {
+                        optionHandler("room", "d");
+                      }}
+                    >
+                      -
+                    </button>
+                    <span>{options.room}</span>
+                    <button
+                      onClick={() => {
+                        optionHandler("room", "i");
+                      }}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="search-bar-box-btn">
+              <button>
+                <IoIosSearch />
+              </button>
+            </div>
+          </div>
+        ) : null}
       </div>
     </div>
   );

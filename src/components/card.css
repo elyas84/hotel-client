@@ -1,87 +1,67 @@
-.card-container {
+.card-container-type-1 {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  transition: all 0.2s ease;
-  box-shadow: 2px 2px 20px 2px lightgray;
+  gap: 20px;
 }
 
-.card-image-container {
+.type-1-image {
   width: 100%;
-  height: 200px;
+  height: 160px;
 }
-.card-image-container img {
+.type-1-image img {
   object-fit: cover;
   width: 100%;
   height: 100%;
-  border-radius: 7px 7px 0 0;
+  border-radius: 7px;
 }
-.card-info {
-  padding: 30px;
+
+.card-container-type-2 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.badge {
+  position: absolute;
+  top: 10px;
+  left: -10px;
+  width: 100px;
+  height: auto;
+  background-color: #d4111e;
+  padding: 3px;
+  color: #fff;
+  border-radius: 0 7px 0 7px;
+  text-align: center;
+}
+.card-body-container {
+  box-shadow: 2px 2px 20px 2px lightgray;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  border-radius: 0 0 7px 7px;
 }
-.card-info small {
-  font-size: 12px;
-}
-
-.ratio-container,
-.price-container {
+.card-body-middle {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
-.price-container {
-  margin-top: 20px;
-}
-.ratio-box {
+.ratio {
+  background-color: #003b95;
   width: 25px;
   height: 25px;
-  background-color: #3e8ed0;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 5px;
-  color: #fff;
+  border-radius: 6px;
 }
-
-.card-container button {
-  /* background-color: #3e8ed0; */
-  margin-top: 20px;
-  border: 0.7px solid #3e8ed0;
-  padding: 15px;
-  cursor: pointer;
-  color: #fff;
-  letter-spacing: 1px;
-  background-color: transparent;
-  color: #3e8ed0;
-}
-.card-container button:hover {
-  background-color: #3e8ed0;
-  color: #fff;
-}
-
-.card-container:hover {
-  transform: scale(1.02);
-}
-
-/* reponsivenss */
-@media only screen and (max-width: 700px) {
-  .card-container {
-    font-size: 14px;
-  }
-  .card-container button {
-    padding: 8px;
-  }
-}
-@media only screen and (max-width: 430px) {
-  .card-image-container {
-    height: 200px;
-  }
-  .card-container {
-    font-size: 14px;
-  }
+.card-body-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }

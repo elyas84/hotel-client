@@ -2,15 +2,13 @@ import React from "react";
 import "./App.css";
 import { IoIosArrowUp } from "react-icons/io";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-// pages
-
-import Home from "./pages/Home";
-import Contact from "./pages/Contact";
-import Explore from "./pages/Explore";
-import About from "./pages/About";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Booking from "./pages/Booking";
+import Accommondation from "./pages/Accommondation";
+import Flight from "./pages/Flight";
+import RentCar from "./pages/RentCar";
+import Attraction from "./pages/Attraction";
+
 export default function App() {
   const scrollUp = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
@@ -46,23 +44,19 @@ export default function App() {
       children: [
         {
           path: "/",
-          element: <Home />,
+          element: <Accommondation />,
         },
         {
-          path: "/contact",
-          element: <Contact />,
+          path: "/flight",
+          element: <Flight />,
         },
         {
-          path: "/explore",
-          element: <Explore />,
+          path: "/rent-car",
+          element: <RentCar />,
         },
         {
-          path: "/about",
-          element: <About />,
-        },
-        {
-          path: "/booking",
-          element: <Booking />,
+          path: "/attraction",
+          element: <Attraction />,
         },
       ],
     },
