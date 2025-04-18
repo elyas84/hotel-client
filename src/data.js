@@ -394,6 +394,20 @@ export const trends = [
   {
     image:
       "https://plus.unsplash.com/premium_photo-1661964177687-57387c2cbd14?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Tokyo",
+    title: "Tokyo Last",
   },
 ];
+
+export const suggestions = [
+  "Paris",
+  "London",
+  "Rome",
+  "Tokyo",
+  "Stockholm",
+  "Oslo",
+  "Berlin",
+  "Madrid",
+  "Barcelona",
+  "Istanbul",
+];
+

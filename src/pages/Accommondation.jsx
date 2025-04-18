@@ -9,7 +9,7 @@ export default function Accommondation() {
     <div className="accommondation-container">
       <div className="row-container">
         <h2>Explore different types of accommodations</h2>
-        <Pagination array={accomondationType} amount={4} type={1} pixel={200} />
+        <Pagination array={accomondationType} amount={4} type={1} pixel={180} />
       </div>
       <div className="row-container">
         <h2>Trending destinations</h2>
@@ -21,14 +21,14 @@ export default function Accommondation() {
       <div className="row-container">
         <h2>Offers for the weekend</h2>
         <small>Save on stays March 21 - March 23</small>
-        <Pagination array={offeres} amount={3} type={2} pixel={185} />
+        <Pagination array={offeres} amount={4} type={2} pixel={220} />
       </div>
       <div className="row-container">
         <h2>Stay at our best unique accommodations</h2>
         <small>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, ex.
         </small>
-        <Pagination array={offeres} amount={4} type={3} pixel={140} />
+        <Pagination array={offeres} amount={4} type={3} pixel={220} />
       </div>
     </div>
   );

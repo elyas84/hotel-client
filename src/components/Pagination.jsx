@@ -31,7 +31,7 @@ export default function Pagination({ array, amount, type, pixel }) {
       <ul className="page-index-container">
         {customArrSize.map((page, i) => (
           <button
-            className="page-btn"
+            className={page === 1 ? "page-btn-focus" : "page-btn"}
             key={i}
             onClick={() => {
               setCurrentPageData(page);

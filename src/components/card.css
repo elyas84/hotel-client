@@ -28,13 +28,13 @@
   position: absolute;
   top: 10px;
   left: -10px;
-  width: 100px;
+  width: 60px;
   height: auto;
   background-color: #d4111e;
-  padding: 3px;
   color: #fff;
   border-radius: 0 7px 0 7px;
   text-align: center;
+  font-size: 13px;
 }
 .card-body-container {
   box-shadow: 2px 2px 20px 2px lightgray;
@@ -47,7 +47,8 @@
 .card-body-middle {
   display: flex;
   align-items: center;
-  gap: 10px;
+  /* gap: 10px; */
+  justify-content: space-between;
 }
 .ratio {
   background-color: #003b95;

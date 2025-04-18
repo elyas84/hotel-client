@@ -30,6 +30,23 @@
   background-color: transparent;
 }
 .page-btn:hover {
-  background-color: #006ce4;
+  background-color: #003b95;
   color: #fff;
+}
+.page-btn:focus {
+  background-color: #003b95;
+  color: #fff;
+}
+
+.page-btn-focus {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    background-color: #006ce4;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }

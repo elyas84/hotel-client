@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import "./header.css";
 
-import {
-  IoBedOutline,
-  IoCarSportOutline,
-  IoCalendarOutline,
-} from "react-icons/io5";
+import { IoBedOutline, IoCarSportOutline } from "react-icons/io5";
 import {
   MdFlight,
   MdOutlineTravelExplore,
@@ -16,6 +12,8 @@ import { AiOutlineUser } from "react-icons/ai";
 import { NavLink, useLocation } from "react-router-dom";
 export default function Header() {
   const location = useLocation();
+  const navItem = location.pathname.split("/")[1];
+  console.log(location.pathname.split("/")[1]);
   const [clicked, setClicked] = useState(false);
   const [options, setOptions] = useState({
     adult: 2,
@@ -68,8 +66,34 @@ export default function Header() {
           </NavLink>
         </div>
         <div className="header-bottom">
-          <h1>Find your next stay</h1>
-          <p>Search for deals on hotels, vacation homes and more...</p>
+          {location.pathname === "/" ? (
+            <>
+              <h2>Find your next stay</h2>
+              <label>
+                Search for deals on hotels, vacation homes and more...
+              </label>
+            </>
+          ) : navItem === "flight" ? (
+            <>
+              <h2>Compare and book cheap flights easily</h2>
+              <label>Search for deals on flgihts and more ...</label>
+            </>
+          ) : navItem === "rent-car" ? (
+            <>
+              <h2>Rental cars for all types of trips</h2>
+              <label>
+                Good cars at good prices from the biggest rental car companies
+              </label>
+            </>
+          ) : navItem === "attraction" ? (
+            <>
+              <h2> Attractions, Activities and Experiences</h2>
+              <label>
+                Discover new attractions and experiences that suit your
+                interests
+              </label>
+            </>
+          ) : null}
         </div>
         {location.pathname === "/" ? (
           <div className="search-bar">
